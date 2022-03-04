@@ -1,20 +1,20 @@
 <template>
   <div v-if="appReady" class="min-h-full font-Poppins box-border">
-    <Navigation/>
-    <router-view/>
-    <Footer/>
+    <Navigation />
+    <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Navigation from './components/Navigation.vue'
-import Footer from './components/Footer.vue'
-import {ref} from "vue"
-import {supabase} from "./supabase/init.js"
-import store from "./store/index.js"
+import Navigation from "./components/Navigation.vue";
+import Footer from "./components/Footer.vue";
+import { ref } from "vue";
+import { supabase } from "./supabase/init.js";
+import store from "./store/index.js";
 
 export default {
-  components:{
+  components: {
     Navigation,
     Footer,
   },
@@ -26,7 +26,7 @@ export default {
     const user = supabase.auth.user();
 
     // If user does not exist, need to make app ready
-    if(!user){
+    if (!user) {
       appReady.value = true;
     }
 
@@ -35,9 +35,9 @@ export default {
     supabase.auth.onAuthStateChange((_, session) => {
       store.methods.setUser(session);
       appReady.value = true;
-    })
+    });
 
-    return {appReady};
+    return { appReady };
   },
 };
 </script>

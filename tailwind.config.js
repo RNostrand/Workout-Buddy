@@ -1,10 +1,10 @@
 module.exports = {
-  purge: {content: ["./public/**/*.html", "./src/**/*.vue"]},
+  purge: { content: ["./public/**/*.html", "./src/**/*.vue"] },
   darkMode: false,
   theme: {
     extend: {
       colors: {
-        "navy": "#202A44",
+        navy: "#202A44",
         "navy-bright": "#4B68B8",
         "light-grey": "#f1f1f1",
       },
@@ -15,8 +15,8 @@ module.exports = {
     },
 
     flex: {
-      "1": "1 1 0%",
-      "2": "2 2 0%",
+      1: "1 1 0%",
+      2: "2 2 0%",
     },
 
     container: {
@@ -32,6 +32,6 @@ module.exports = {
   variants: {
     extend: {},
   },
-  
+
   plugins: [],
 };

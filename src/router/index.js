@@ -1,14 +1,13 @@
-import { createRouter, createWebHistory, } from "vue-router"
-import Workouts from "../views/Workouts.vue"
-import Login from "../views/Login.vue"
-import Register from "../views/Register.vue"
-import Create from "../views/Create.vue"
-import ViewWorkout from "../views/ViewWorkout.vue"
-import NotFound from "../views/NotFound.vue"
-import Home from "../views/Home.vue"
-import About from "../views/About.vue"
-import {supabase} from "../supabase/init.js"
-
+import { createRouter, createWebHistory } from "vue-router";
+import Workouts from "../views/Workouts.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
+import Create from "../views/Create.vue";
+import ViewWorkout from "../views/ViewWorkout.vue";
+import NotFound from "../views/NotFound.vue";
+import Home from "../views/Home.vue";
+import About from "../views/About.vue";
+import { supabase } from "../supabase/init.js";
 
 const routes = [
   {
@@ -91,20 +90,20 @@ const router = createRouter({
 });
 
 // Change document titles
-router.beforeEach((to, from, next) =>{
-  document.title=  `${to.meta.title} | Active Tracker`;
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | Active Tracker`;
   next();
 });
 
 // Route guard for auth routes
-router.beforeEach((to, from, next) =>{
+router.beforeEach((to, from, next) => {
   const user = supabase.auth.user();
-  if(to.matched.some((res) => res.meta.auth)){
-    if(user){
+  if (to.matched.some((res) => res.meta.auth)) {
+    if (user) {
       next();
       return;
     }
-    next({name: "Login"});
+    next({ name: "Login" });
     return;
   }
   next();
